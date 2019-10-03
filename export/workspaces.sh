@@ -1,6 +1,5 @@
 EXPORT_PATH=$1
 SCRIPT_PATH="`dirname \"$0\"`"
-echo
 echo "Retrieving workspaces ..."
 echo
 mkdir $EXPORT_PATH/workspaces
@@ -17,4 +16,5 @@ for workspace in $(echo "${workspaces}" | jq -r '.[] | @base64'); do
   echo
   curl $GS_REST/workspaces/$wsName.json > $EXPORT_PATH/workspaces/$wsName/workspace.json
   ./$SCRIPT_PATH/datastores.sh $EXPORT_PATH $wsName
+  echo
 done

@@ -19,4 +19,5 @@ for datastore in $(echo "${datastores}" | jq -r '.[] | @base64'); do
   echo
   curl $GS_REST/workspaces/$wsName/datastores/$dsName.json > $EXPORT_PATH/workspaces/$wsName/datastores/$dsName/datastore.json
   ./$SCRIPT_PATH/featuretypes.sh $EXPORT_PATH $wsName $dsName
+  echo
 done

@@ -4,6 +4,7 @@ dsName=$3
 sleep 5
 echo
 echo "Retrieving featuretypes for datastore '$dsName' ..."
+echo
 mkdir -p $EXPORT_PATH/workspaces/$wsName/datastores/$dsName/featuretypes
 featuretypes=`curl $GS_REST/workspaces/$wsName/datastores/$dsName/featuretypes.json | jq '.featureTypes.featureType'`
 for featuretype in $(echo "${featuretypes}" | jq -r '.[] | @base64'); do
@@ -16,4 +17,5 @@ for featuretype in $(echo "${featuretypes}" | jq -r '.[] | @base64'); do
   echo "Saving featuretype '$ftName' to '$EXPORT_PATH/workspaces/$wsName/datastores/$dsName/featuretypes/$ftName.json' ..."
   echo
   curl $GS_REST/workspaces/$wsName/datastores/$dsName/featuretypes/$ftName.json > $EXPORT_PATH/workspaces/$wsName/datastores/$dsName/featuretypes/$ftName.json
+  echo
 done
