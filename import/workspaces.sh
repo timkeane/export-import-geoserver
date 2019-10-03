@@ -1,7 +1,7 @@
 IMPORT_PATH=$1
 SCRIPT_PATH="`dirname \"$0\"`"
-echo "Configuring workspaces ..."
 echo
+echo "Configuring workspaces ..."
 workspaces=(`ls $IMPORT_PATH/workspaces/`)
 for wsName in ${workspaces[*]}; do
   sleep 5
