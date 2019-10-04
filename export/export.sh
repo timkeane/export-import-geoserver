@@ -1,5 +1,6 @@
 EXPORT_PATH=$1
 SCRIPT_PATH="`dirname \"$0\"`"
+echo
 if [ "$EXPORT_PATH" == "" ]; then
   echo "You must specify an export directory argument."
   exit 1
@@ -16,4 +17,5 @@ if test -d "$EXPORT_PATH/workspaces"; then
     ;;
   esac
 fi
+echo
 ./$SCRIPT_PATH/workspaces.sh $EXPORT_PATH

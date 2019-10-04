@@ -5,7 +5,7 @@ echo
 mkdir $EXPORT_PATH/workspaces
 workspaces=`curl $GS_REST/workspaces.json | jq '.workspaces.workspace'`
 for workspace in $(echo "${workspaces}" | jq -r '.[] | @base64'); do
-  sleep 5
+  sleep 1
   _jq() {
     echo ${workspace} | base64 --decode | jq -r ${1}
   }
@@ -13,8 +13,11 @@ for workspace in $(echo "${workspaces}" | jq -r '.[] | @base64'); do
   mkdir $EXPORT_PATH/workspaces/$wsName
   echo
   echo "Saving workspace '$wsName' to '$EXPORT_PATH/workspaces/$wsName/workspace.json' ..."
+  echo "curl $GS_REST/workspaces/$wsName.json > $EXPORT_PATH/workspaces/$wsName/workspace.json"
   echo
   curl $GS_REST/workspaces/$wsName.json > $EXPORT_PATH/workspaces/$wsName/workspace.json
-  ./$SCRIPT_PATH/datastores.sh $EXPORT_PATH $wsName
+  cat $EXPORT_PATH/workspaces/$wsName/workspace.json | jq .
   echo
+  # ./$SCRIPT_PATH/namespaces.sh $EXPORT_PATH $wsName
+  ./$SCRIPT_PATH/datastores.sh $EXPORT_PATH $wsName
 done
