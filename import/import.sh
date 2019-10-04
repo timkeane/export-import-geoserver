@@ -7,4 +7,3 @@ fi
 ./$SCRIPT_PATH/workspaces.sh $IMPORT_PATH
 echo
 echo Done.
-echo

@@ -18,6 +18,5 @@ for workspace in $(echo "${workspaces}" | jq -r '.[] | @base64'); do
   curl $GS_REST/workspaces/$wsName.json > $EXPORT_PATH/workspaces/$wsName/workspace.json
   cat $EXPORT_PATH/workspaces/$wsName/workspace.json | jq .
   echo
-  # ./$SCRIPT_PATH/namespaces.sh $EXPORT_PATH $wsName
   ./$SCRIPT_PATH/datastores.sh $EXPORT_PATH $wsName
 done

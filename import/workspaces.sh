@@ -6,8 +6,8 @@ workspaces=(`ls $IMPORT_PATH/workspaces/`)
 for wsName in ${workspaces[*]}; do
   sleep 1
   echo
-  echo "Configuring workspace '$wsName'"
-  echo "curl -X POST $GS_REST/workspaces.json -d "@${IMPORT_PATH}/workspaces/$wsName/workspace.json" -H "Content-Type: application/json""
+  echo "Configuring workspace '$wsName' ..."
+  echo "curl -X POST $GS_REST/workspaces.json -d \"@${IMPORT_PATH}/workspaces/$wsName/workspace.json\" -H \"Content-Type: application/json\""
   curl -X POST $GS_REST/workspaces.json -d "@${IMPORT_PATH}/workspaces/$wsName/workspace.json" -H "Content-Type: application/json"
   echo
   # ./$SCRIPT_PATH/namespaces.sh $IMPORT_PATH $wsName
