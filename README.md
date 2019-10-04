@@ -14,3 +14,6 @@ bash scripts to export running geoserver configuration to a directory structure 
 bash scripts to import geoserver configuration from a directory structure of json files
 
 `./import.sh <import-dir>`
+
+### todo
+- strip out passwords from export and inject into import 
