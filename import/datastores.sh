@@ -7,20 +7,20 @@ datastores=(`ls $IMPORT_PATH/namespaces/$wsName/datastores`)
 for dsName in ${datastores[*]}; do
   ENDPOINT="workspaces/$wsName/datastores.json"
   METHOD="POST"
-  while [ true ]; do
+  # while [ true ]; do
     sleep 1
     echo
     echo "Configuring datastore '$dsName' ..."
-    echo "curl -X $METHOD $GS_REST/$ENDPOINT -d \"@${IMPORT_PATH}/namespaces/$wsName/datastores/$dsName/datastore.json\" -H \"Content-Type: application/json\""
-    status=$(curl -X $METHOD $GS_REST/$ENDPOINT -d "@${IMPORT_PATH}/namespaces/$wsName/datastores/$dsName/datastore.json" -H "Content-Type: application/json")
-    echo $status
-    if [[ $status == "200" ]]; then
+    echo "curl -s -o /dev/null -w '%{http_code}' -X $METHOD $GS_REST/$ENDPOINT -d \"@${IMPORT_PATH}/namespaces/$wsName/datastores/$dsName/datastore.json\" -H \"Content-Type: application/json\""
+    status=$(curl -s -o /dev/null -w '%{http_code}' -X $METHOD $GS_REST/$ENDPOINT -d "@${IMPORT_PATH}/namespaces/$wsName/datastores/$dsName/datastore.json" -H "Content-Type: application/json")
+    echo "HTTP Status $status"
+    # if [[ $status == "200" ]]; then
       ./$SCRIPT_PATH/featuretypes.sh $IMPORT_PATH $wsName $dsName
-      break
-    else
-      ENDPOINT="workspaces/$wsName/datastores/$dsName.json"
-      METHOD="PUT"
-    fi
+      # break
+    # else
+    #   ENDPOINT="workspaces/$wsName/datastores/$dsName.json"
+    #   METHOD="PUT"
+    # fi
     echo
-  done
+  # done
 done

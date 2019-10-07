@@ -7,18 +7,19 @@ featuretypes=(`ls $IMPORT_PATH/namespaces/$wsName/datastores/$dsName/featuretype
 for ftName in ${featuretypes[*]}; do
   ENDPOINT="workspaces/$wsName/datastores/$dsName/featuretypes.json"
   METHOD="POST"
-  while [ true ]; do
+  # while [ true ]; do
     sleep 1
     echo
     echo "Configuring featuretype '${ftName/\.json/}' ..."
-    echo "curl -X $METHOD $GS_REST/$ENDPOINT -d \"@${IMPORT_PATH}/namespaces/$wsName/datastores/$dsName/featuretypes/$ftName\" -H \"Content-Type: application/json\""
-    status=(curl -X $METHOD $GS_REST/$ENDPOINT -d "@${IMPORT_PATH}/namespaces/$wsName/datastores/$dsName/featuretypes/$ftName" -H "Content-Type: application/json")
-    if [[ $status == "200" ]]; then
-      break
-    else
-      ENDPOINT="workspaces/$wsName/datastores/$dsName/featuretypes/$ftName"
-      METHOD="PUT"
-    fi
+    echo "curl -s -o /dev/null -w '%{http_code}' -X $METHOD $GS_REST/$ENDPOINT -d \"@${IMPORT_PATH}/namespaces/$wsName/datastores/$dsName/featuretypes/$ftName\" -H \"Content-Type: application/json\""
+    status=$(curl -s -o /dev/null -w '%{http_code}' -X $METHOD $GS_REST/$ENDPOINT -d "@${IMPORT_PATH}/namespaces/$wsName/datastores/$dsName/featuretypes/$ftName" -H "Content-Type: application/json")
+    echo "HTTP Status $status"
+    # if [[ $status == "200" ]]; then
+    #   break
+    # else
+    #   ENDPOINT="workspaces/$wsName/datastores/$dsName/featuretypes/$ftName"
+    #   METHOD="PUT"
+    # fi
     echo
-  done
+  # done
 done
