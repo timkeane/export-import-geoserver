@@ -6,11 +6,11 @@ if [ "$EXPORT_PATH" == "" ]; then
   exit 1
 fi
 mkdir -p $EXPORT_PATH
-if test -d "$EXPORT_PATH/workspaces"; then
-  read -r -p "Directory '$EXPORT_PATH/workspaces' already exists. Delete? [y/n] " input
+if test -d "$EXPORT_PATH/namespaces"; then
+  read -r -p "Directory '$EXPORT_PATH/namespaces' already exists. Delete? [y/n] " input
   case $input in
     [yY][eE][sS]|[yY])
-      rm -rf $EXPORT_PATH/workspaces
+      rm -rf $EXPORT_PATH/namespaces
     ;;
     [nN][oO]|[nN])
       exit 2
@@ -18,4 +18,4 @@ if test -d "$EXPORT_PATH/workspaces"; then
   esac
 fi
 echo
-./$SCRIPT_PATH/workspaces.sh $EXPORT_PATH
+./$SCRIPT_PATH/namespaces.sh $EXPORT_PATH

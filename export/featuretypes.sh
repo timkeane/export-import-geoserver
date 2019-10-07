@@ -5,7 +5,7 @@ sleep 1
 echo
 echo "Retrieving featuretypes for datastore '$dsName' ..."
 echo
-mkdir -p $EXPORT_PATH/workspaces/$wsName/datastores/$dsName/featuretypes
+mkdir -p $EXPORT_PATH/namespaces/$wsName/datastores/$dsName/featuretypes
 echo "curl $GS_REST/workspaces/$wsName/datastores/$dsName/featuretypes.json | jq '.featureTypes.featureType'"
 featuretypes=`curl $GS_REST/workspaces/$wsName/datastores/$dsName/featuretypes.json | jq '.featureTypes.featureType'`
 for featuretype in $(echo "${featuretypes}" | jq -r '.[] | @base64'); do
@@ -15,10 +15,10 @@ for featuretype in $(echo "${featuretypes}" | jq -r '.[] | @base64'); do
   }
   ftName=$(_jq '.name')
   echo
-  echo "Saving featuretype '$ftName' to '$EXPORT_PATH/workspaces/$wsName/datastores/$dsName/featuretypes/$ftName.json' ..."
-  echo "curl $GS_REST/workspaces/$wsName/datastores/$dsName/featuretypes/$ftName.json > $EXPORT_PATH/workspaces/$wsName/datastores/$dsName/featuretypes/$ftName.json"
+  echo "Saving featuretype '$ftName' to '$EXPORT_PATH/namespaces/$wsName/datastores/$dsName/featuretypes/$ftName.json' ..."
+  echo "curl $GS_REST/workspaces/$wsName/datastores/$dsName/featuretypes/$ftName.json > $EXPORT_PATH/namespaces/$wsName/datastores/$dsName/featuretypes/$ftName.json"
   echo
-  curl $GS_REST/workspaces/$wsName/datastores/$dsName/featuretypes/$ftName.json > $EXPORT_PATH/workspaces/$wsName/datastores/$dsName/featuretypes/$ftName.json
-  cat $EXPORT_PATH/workspaces/$wsName/datastores/$dsName/featuretypes/$ftName.json | jq .
+  curl $GS_REST/workspaces/$wsName/datastores/$dsName/featuretypes/$ftName.json > $EXPORT_PATH/namespaces/$wsName/datastores/$dsName/featuretypes/$ftName.json
+  cat $EXPORT_PATH/namespaces/$wsName/datastores/$dsName/featuretypes/$ftName.json | jq .
   echo
 done
