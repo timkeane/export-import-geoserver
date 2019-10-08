@@ -6,7 +6,6 @@ mkdir $EXPORT_PATH/namespaces
 namespaces=`curl $GS_REST/namespaces.json | jq '.namespaces.namespace'`
 for namespace in $(echo "${namespaces}" | jq -r '.[] | @base64'); do
   echo $namespace
-  exit 0
   sleep 1
   _jq() {
     echo ${namespace} | base64 --decode | jq -r ${1}
