@@ -19,3 +19,4 @@ if test -d "$EXPORT_PATH/namespaces"; then
 fi
 echo
 ./$SCRIPT_PATH/namespaces.sh $EXPORT_PATH
+./$SCRIPT_PATH/gwc.sh $EXPORT_PATH

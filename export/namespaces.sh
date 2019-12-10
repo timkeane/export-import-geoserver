@@ -20,4 +20,5 @@ for namespace in $(echo "${namespaces}" | jq -r '.[] | @base64'); do
   cat $EXPORT_PATH/namespaces/$wsName/namespace.json | jq .
   echo
   ./$SCRIPT_PATH/datastores.sh $EXPORT_PATH $wsName
+  # ./$SCRIPT_PATH/layers.sh $EXPORT_PATH $wsName
 done
