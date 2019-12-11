@@ -8,5 +8,6 @@ if [ "$IMPORT_PATH" == "" ]; then
   exit 1
 fi
 ./$SCRIPT_PATH/namespaces.sh $IMPORT_PATH
+# ./$SCRIPT_PATH/gwc.sh $IMPORT_PATH
 echo
 echo Done.
