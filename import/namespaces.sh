@@ -1,3 +1,5 @@
+#!/usr/bin/env bash
+
 IMPORT_PATH=$1
 SCRIPT_PATH="`dirname \"$0\"`"
 echo
@@ -15,8 +17,8 @@ for wsName in ${namespaces[*]}; do
     echo "HTTP Status $status"
     # if [ $status -eq 200 ]; then
       ./$SCRIPT_PATH/styles.sh $IMPORT_PATH $wsName
-      # ./$SCRIPT_PATH/datastores.sh $IMPORT_PATH $wsName
-      # ./$SCRIPT_PATH/layers.sh $IMPORT_PATH $wsName
+      ./$SCRIPT_PATH/datastores.sh $IMPORT_PATH $wsName
+      ./$SCRIPT_PATH/layers.sh $IMPORT_PATH $wsName
     #   break
     # else
     #   echo $status

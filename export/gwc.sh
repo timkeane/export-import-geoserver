@@ -1,3 +1,5 @@
+#!/usr/bin/env bash
+
 EXPORT_PATH=$1
 SCRIPT_PATH="`dirname \"$0\"`"
 sleep 1

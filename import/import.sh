@@ -1,3 +1,5 @@
+#!/usr/bin/env bash
+
 IMPORT_PATH=$1
 SCRIPT_PATH="`dirname \"$0\"`"
 echo $SCRIPT_PATH

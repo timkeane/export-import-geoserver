@@ -1,3 +1,5 @@
+#!/usr/bin/env bash
+
 EXPORT_PATH=$1
 wsName=$2
 dsName=$3
