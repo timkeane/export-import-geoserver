@@ -19,6 +19,7 @@ for wsName in ${namespaces[*]}; do
       ./$SCRIPT_PATH/styles.sh $IMPORT_PATH $wsName
       ./$SCRIPT_PATH/datastores.sh $IMPORT_PATH $wsName
       ./$SCRIPT_PATH/layers.sh $IMPORT_PATH $wsName
+      ./$SCRIPT_PATH/layergroups.sh $IMPORT_PATH $wsName
     #   break
     # else
     #   echo $status
