@@ -6,16 +6,9 @@ echo "Retrieving gwc layers ..."
 echo
 mkdir -p $EXPORT_PATH/gwc/layers
 layers=`curl $GWC_REST/layers.json | jq`
-
-echo "========================================="
-echo $layers
-
 for layer in $(echo "${layers}" | jq -r '.[]'); do
   sleep 1
   layer=$layer
-
-echo $layer
-
   mkdir -p $EXPORT_PATH/gwc/layers/$layer
   echo
   echo "Saving layer '$layer' to '$EXPORT_PATH/gwc/layers/$layer/layer.json' ..."
