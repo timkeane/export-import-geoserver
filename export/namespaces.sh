@@ -19,6 +19,8 @@ for namespace in $(echo "${namespaces}" | jq -r '.[] | @base64'); do
   curl $GS_REST/namespaces/$wsName.json > $EXPORT_PATH/namespaces/$wsName/namespace.json
   cat $EXPORT_PATH/namespaces/$wsName/namespace.json | jq .
   echo
+  ./$SCRIPT_PATH/sld.sh $EXPORT_PATH $wsName
   ./$SCRIPT_PATH/datastores.sh $EXPORT_PATH $wsName
-  # ./$SCRIPT_PATH/layers.sh $EXPORT_PATH $wsName
+  ./$SCRIPT_PATH/layers.sh $EXPORT_PATH $wsName
+  # ./$SCRIPT_PATH/layergroups.sh $EXPORT_PATH $wsName
 done

@@ -20,6 +20,4 @@ for layergroup in $(echo "${layergroups}" | jq -r '.[] | @base64'); do
   curl $GS_REST/workspaces/$wsName/layergroups/$lgName.json > $EXPORT_PATH/namespaces/$wsName/layergroups/$lgName/layergroup.json
   cat $EXPORT_PATH/namespaces/$wsName/layergroups/$lgName/layergroup.json | jq .
   echo
-  ./$SCRIPT_PATH/featuretypes.sh $EXPORT_PATH $wsName $lgName
-  echo
 done
