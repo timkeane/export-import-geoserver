@@ -3,8 +3,8 @@
 ## prerequisites
 - bash shell
 - jq https://stedolan.github.io/jq/
-- a `GS_REST` environment variable set to `http://<user>@<password>:<geoserver-host>:<geoserver-port>/geoserver/rest`
-- a `GWC_REST` environment variable set to `http://<user>@<password>:<geoserver-host>:<geoserver-port>/geoserver/gwc/rest`
+- a `GS_REST` environment variable set to `http://<user>:<password>@<geoserver-host>:<geoserver-port>/geoserver/rest`
+- a `GWC_REST` environment variable set to `http://<user>:<password>@<geoserver-host>:<geoserver-port>/geoserver/gwc/rest`
 
 ## export
 bash scripts to export running geoserver configuration to a directory structure of json files
